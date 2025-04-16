@@ -1,6 +1,18 @@
 #pragma once
 #include "Arduino.h"
 
+#ifndef TINY_BUTTON_REPEAT_EVERY_MS
+#define TINY_BUTTON_REPEAT_EVERY_MS 80
+#endif
+
+#ifndef TINY_BUTTON_REPEAT_DELAY_MS
+#define TINY_BUTTON_REPEAT_DELAY_MS 700
+#endif
+
+#ifndef TINY_BUTTON_FILTER_TIME_MS
+#define TINY_BUTTON_FILTER_TIME_MS 50
+#endif
+
 class TinyButton
 {
   uint8_t m_pin;

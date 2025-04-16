@@ -1,9 +1,5 @@
 #include "TinyButton.h"
 
-#define TINY_BUTTON_REPEAT_EVERY_MS 80
-#define TINY_BUTTON_REPEAT_DELAY_MS 700
-#define TINY_BUTTON_FILTER_TIME_MS 50
-
 TinyButton::TinyButton(uint8_t pin, bool pullup, bool inverted)
 {
   m_pin = pin;
