@@ -1,7 +1,7 @@
 # SmallButton
 Button library for arduino with support of almost use cases and optimized memory footprint<br/>
 <br/>
-Size of TinyButton class - 4 bytes.<br/>
+Size of SmallButton class - 4 bytes.<br/>
 Supported use cases:<br/>
 1) Single button press
 2) Single press and repeat
