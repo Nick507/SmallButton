@@ -56,9 +56,9 @@ public:
 
   /*
   Examples:
-  if(button.get() & TinyButton::PRESS)           ... for single press event
-  if(button.get() & TinyButton::PRESS_OR_REPEAT) ... for single press and repeat events
-  if(button.get() & TinyButton::PRESSED)         ... to check current state
+  if(button.get() & SmallButton::PRESS)           ... for single press event
+  if(button.get() & SmallButton::PRESS_OR_REPEAT) ... for single press and repeat events
+  if(button.get() & SmallButton::PRESSED)         ... to check current state
   */
 };
 
