@@ -1,4 +1,4 @@
-# TinyButton
+# SmallButton
 Button library for arduino with support of almost use cases and optimized memory footprint<br/>
 <br/>
 Size of TinyButton class - 4 bytes.<br/>
@@ -20,4 +20,4 @@ TINY_BUTTON_REPEAT_EVERY_MS - time interval between repeat (default 80ms)<br/>
 To override these settings, add define statement before include library header, for example:<br/>
 <br/>
 #define TINY_BUTTON_FILTER_TIME_MS 100<br/>
-#include "TinyButton.h"<br/>
+#include "SmallButton.h"<br/>
