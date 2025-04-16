@@ -13,11 +13,11 @@ Invert flag and using of pullup resistor can be configured per button.<br/>
 Do not need to call initialization in setup().<br/>
 <br/>
 Library configuration macro:<br/>
-TINY_BUTTON_FILTER_TIME_MS - filter time for debouncing (default 50ms)<br/>
-TINY_BUTTON_REPEAT_DELAY_MS - delay time before first repeat (default 700ms)<br/>
-TINY_BUTTON_REPEAT_EVERY_MS - time interval between repeat (default 80ms)<br/>
+SMALL_BUTTON_FILTER_TIME_MS - filter time for debouncing (default 50ms)<br/>
+SMALL_BUTTON_REPEAT_DELAY_MS - delay time before first repeat (default 700ms)<br/>
+SMALL_BUTTON_REPEAT_EVERY_MS - time interval between repeat (default 80ms)<br/>
 <br/>
 To override these settings, add define statement before include library header, for example:<br/>
 <br/>
-#define TINY_BUTTON_FILTER_TIME_MS 100<br/>
+#define SMALL_BUTTON_FILTER_TIME_MS 100<br/>
 #include "SmallButton.h"<br/>
