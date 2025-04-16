@@ -1,19 +1,19 @@
 #pragma once
 #include "Arduino.h"
 
-#ifndef TINY_BUTTON_REPEAT_EVERY_MS
-#define TINY_BUTTON_REPEAT_EVERY_MS 80
+#ifndef SMALL_BUTTON_REPEAT_EVERY_MS
+#define SMALL_BUTTON_REPEAT_EVERY_MS 80
 #endif
 
-#ifndef TINY_BUTTON_REPEAT_DELAY_MS
-#define TINY_BUTTON_REPEAT_DELAY_MS 700
+#ifndef SMALL_BUTTON_REPEAT_DELAY_MS
+#define SMALL_BUTTON_REPEAT_DELAY_MS 700
 #endif
 
-#ifndef TINY_BUTTON_FILTER_TIME_MS
-#define TINY_BUTTON_FILTER_TIME_MS 50
+#ifndef SMALL_BUTTON_FILTER_TIME_MS
+#define SMALL_BUTTON_FILTER_TIME_MS 50
 #endif
 
-class TinyButton
+class SmallButton
 {
   uint8_t m_pin;
   uint16_t m_lastTime;        // save memory, 16 bit is enough for delays <= 65535ms
@@ -26,7 +26,7 @@ class TinyButton
 
 public:
 
-  TinyButton(uint8_t pin,          // pin number
+  SmallButton(uint8_t pin,          // pin number
              bool pullup = true,   // false: do not use internall pullup resistor, true: activate internal pullup resistor
              bool inverted = true  // false: high port level equals to pressed button state, true: low port level equals to pressed button state
             );

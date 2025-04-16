@@ -1,6 +1,6 @@
-#include <TinyButton.h>
+#include <SmallButton.h>
 
-TinyButton button(1); // 1 - pin number
+SmallButton button(1); // 1 - pin number
 
 void setup() {
     Serial.begin(115200); // initialize serial to print log
@@ -8,5 +8,5 @@ void setup() {
   }
 
   void loop() {
-    if(button.get() & TinyButton::PRESS) Serial.println("Button pressed");
+    if(button.get() & SmallButton::PRESS) Serial.println("Button pressed");
   }

@@ -1,6 +1,6 @@
-#include "TinyButton.h"
+#include "SmallButton.h"
 
-TinyButton::TinyButton(uint8_t pin, bool pullup, bool inverted) :
+SmallButton::SmallButton(uint8_t pin, bool pullup, bool inverted) :
   m_pin(pin),
   m_isInverted(inverted),
   m_pullup(pullup)
@@ -10,14 +10,14 @@ TinyButton::TinyButton(uint8_t pin, bool pullup, bool inverted) :
   begin(); 
 }
 
-void TinyButton::begin()
+void SmallButton::begin()
 {
   pinMode(m_pin, m_pullup ? INPUT_PULLUP : INPUT);
   m_lastState = 2; // not initialized
   m_lastStableState = false;
 }
 
-uint8_t TinyButton::get()
+uint8_t SmallButton::get()
 {
   uint8_t currentState = digitalRead(m_pin) ^ m_isInverted;
   uint16_t currentTime = millis();
@@ -33,13 +33,13 @@ uint8_t TinyButton::get()
 
   if(!m_isStateStable)
   {
-    if(currentTime < (uint16_t)(m_lastTime + TINY_BUTTON_FILTER_TIME_MS)) return m_lastStableState;
+    if(currentTime < (uint16_t)(m_lastTime + SMALL_BUTTON_FILTER_TIME_MS)) return m_lastStableState;
     m_isStateStable = true;
   }
 
   if(m_lastStableState == currentState)
   {
-    if(!currentState || (currentTime < (uint16_t)(m_lastTime + (m_isRepeat ? TINY_BUTTON_REPEAT_EVERY_MS : TINY_BUTTON_REPEAT_DELAY_MS)))) return m_lastStableState;
+    if(!currentState || (currentTime < (uint16_t)(m_lastTime + (m_isRepeat ? SMALL_BUTTON_REPEAT_EVERY_MS : SMALL_BUTTON_REPEAT_DELAY_MS)))) return m_lastStableState;
     m_isRepeat = true;
     m_lastTime = currentTime;
     return (REPEAT | PRESSED);
