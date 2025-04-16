@@ -1,11 +1,19 @@
 #include "TinyButton.h"
 
-TinyButton::TinyButton(uint8_t pin, bool pullup, bool inverted)
+TinyButton::TinyButton(uint8_t pin, bool pullup, bool inverted) :
+  m_pin(pin),
+  m_isInverted(inverted),
+  m_pullup(pullup)
 {
-  m_pin = pin;
-  pinMode(pin, pullup ? INPUT_PULLUP : INPUT);
+  // to avoid separate call in setup()
+  // but some platforms (ESP32) still requires to call begin in setup(): https://github.com/mathertel/OneButton/issues/129
+  begin(); 
+}
+
+void TinyButton::begin()
+{
+  pinMode(m_pin, m_pullup ? INPUT_PULLUP : INPUT);
   m_lastState = 2; // not initialized
-  m_isInverted = inverted;
   m_lastStableState = false;
 }
 
@@ -25,13 +33,13 @@ uint8_t TinyButton::get()
 
   if(!m_isStateStable)
   {
-    if(currentTime < m_lastTime + TINY_BUTTON_FILTER_TIME_MS) return m_lastStableState;
+    if(currentTime < (uint16_t)(m_lastTime + TINY_BUTTON_FILTER_TIME_MS)) return m_lastStableState;
     m_isStateStable = true;
   }
 
   if(m_lastStableState == currentState)
   {
-    if(!currentState || (currentTime < m_lastTime + (m_isRepeat ? TINY_BUTTON_REPEAT_EVERY_MS : TINY_BUTTON_REPEAT_DELAY_MS))) return m_lastStableState;
+    if(!currentState || (currentTime < (uint16_t)(m_lastTime + (m_isRepeat ? TINY_BUTTON_REPEAT_EVERY_MS : TINY_BUTTON_REPEAT_DELAY_MS)))) return m_lastStableState;
     m_isRepeat = true;
     m_lastTime = currentTime;
     return (REPEAT | PRESSED);

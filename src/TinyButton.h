@@ -22,6 +22,7 @@ class TinyButton
   bool m_lastStableState : 1;
   bool m_isInverted : 1;
   bool m_isRepeat : 1;
+  bool m_pullup : 1;
 
 public:
 
@@ -29,6 +30,8 @@ public:
              bool pullup = true,   // false: do not use internall pullup resistor, true: activate internal pullup resistor
              bool inverted = true  // false: high port level equals to pressed button state, true: low port level equals to pressed button state
             );
+
+  void begin();
 
   enum EventMask
   {
