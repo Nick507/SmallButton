@@ -10,6 +10,7 @@ Supported use cases:
 5) Get current state
 
 Invert flag and using of pullup resistor can be configured per button.
+Do not need to call initialization in setup().
 
 Library configuration macro:
 TINY_BUTTON_FILTER_TIME_MS - filter time for debouncing (default 50ms)
