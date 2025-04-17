@@ -40,3 +40,8 @@ void loop() {
   }
 }
 ```
+Note: get() method returns bit flags with all events, so DO NOT call it in a way:
+```cpp
+if((button.get() & SmallButton::PRESS) || (button.get() & SmallButton::REPEAT))
+```
+because you may skip events. Use masks from SmallButton::EventMask, or store result value in a variable and then deal with it.
