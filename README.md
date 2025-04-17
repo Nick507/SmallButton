@@ -2,22 +2,41 @@
 Button library for arduino with support of almost use cases and optimized memory footprint<br/>
 <br/>
 Size of SmallButton class - 4 bytes.<br/>
-Supported use cases:<br/>
-1) Single button press
-2) Single press and repeat
-3) Press or release
-4) Release
-5) Get current state
-<br/>
-Invert flag and using of pullup resistor can be configured per button.<br/>
-Do not need to call initialization in setup().<br/>
+## Features
+- Single button press
+- Single press and repeat
+- Press or release
+- Release
+- Get current state
+- Support invert flag: active button state can be 0 or 1
+- Configure pullup resistor
 <br/>
 Library configuration macro:<br/>
 SMALL_BUTTON_FILTER_TIME_MS - filter time for debouncing (default 50ms)<br/>
 SMALL_BUTTON_REPEAT_DELAY_MS - delay time before first repeat (default 700ms)<br/>
 SMALL_BUTTON_REPEAT_EVERY_MS - time interval between repeat (default 80ms)<br/>
 <br/>
-To override these settings, add define statement before include library header, for example:<br/>
-<br/>
-#define SMALL_BUTTON_FILTER_TIME_MS 100<br/>
-#include "SmallButton.h"<br/>
+To override these settings, add define statement before include library header, for example:
+
+```cpp
+#define SMALL_BUTTON_FILTER_TIME_MS 100 // this line must be above include
+#include "SmallButton.h"
+```
+
+Example of usage:
+```cpp
+#include <SmallButton.h>
+
+SmallButton button(1); // 1 - pin number
+
+void setup() {
+  Serial.begin(115200); // initialize serial to print log
+  button.begin(); // initialize button
+}
+
+void loop() {
+  if(button.get() & SmallButton::PRESS_OR_REPEAT) {
+    Serial.println("Button pressed");
+  }
+}
+```
